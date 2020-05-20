@@ -1,4 +1,4 @@
-package com.limitserver.microservices.limitservice.configuration;
+package com.limitserver.microservices.limitservice.bean;
 
 public class LimitConfiguration {
     private int maximum;
