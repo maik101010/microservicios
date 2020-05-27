@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.math.BigDecimal;
 
 //@FeignClient(name = "current-exchange-service", url = "localhost:8000")
-@FeignClient(name = "current-exchange-service")
+@FeignClient(name = "api-gateway")
 @RibbonClient(name = "current-exchange-service")
 public interface CurrencyExchangeServiceProxy {
-    //Return the object to need, not object that return the other service
-    @GetMapping("/currency-exchange/from/{from}/to/{to}")
+    //Return the object to need, not object that return the other service, set name application "current-exchange-service
+    @GetMapping("/current-exchange-service/currency-exchange/from/{from}/to/{to}")
     CurrencyConversionBean retrieveExchangeValue(@PathVariable("from") String from,
                                                  @PathVariable("to") String to);
 }
