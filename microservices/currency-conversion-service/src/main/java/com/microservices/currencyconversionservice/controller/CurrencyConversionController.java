@@ -1,6 +1,7 @@
 package com.microservices.currencyconversionservice.controller;
 
 import com.microservices.currencyconversionservice.bean.CurrencyConversionBean;
+import com.microservices.currencyconversionservice.bean.JsonFormatBean;
 import com.microservices.currencyconversionservice.config.CurrencyExchangeServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +44,15 @@ public class CurrencyConversionController {
         CurrencyConversionBean response = serviceProxy.retrieveExchangeValue(from, to);
         return new CurrencyConversionBean(response.getId(), from, to, response.getConversionMultiple(),
                 quantity, quantity.multiply(response.getConversionMultiple()), response.getPort());
+    }
+
+    @GetMapping("/test-json-format")
+    public JsonFormatBean formatJson() {
+        return new JsonFormatBean(new CurrencyConversionBean(1L, "", "", new BigDecimal(12), new BigDecimal(15), new BigDecimal(16), 1), "json");
+    }
+    @GetMapping("/test/{param}")
+    public JsonFormatBean formatJson(@PathVariable("param") String param) {
+        return new JsonFormatBean("hola " + param);
     }
 }
 

@@ -35,3 +35,6 @@
  	public Sampler defaultSampler(){
    		return Sampler.ALWAYS_SAMPLE;
    	}
+	
+## Comunicación entre microservicios
+- Usar colas, usar fetch, restTemplate? 
